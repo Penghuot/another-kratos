@@ -74,9 +74,9 @@ log:
 
 secrets:
   cookie:
-    - env://SECRETS_DEFAULT
+    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
   cipher:
-    - env://SECRETS_DEFAULT
+    - 32-LONG-SECRET-NOT-SECURE-AT-ALL
 
 ciphers:
   algorithm: xchacha20-poly1305
