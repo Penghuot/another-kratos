@@ -1,6 +1,6 @@
-version: v0.13.0
+version: v1.3.0
 
-dsn: env://DSN
+dsn: ${{Postgres.DATABASE_URL}}
 
 serve:
   public:
@@ -85,13 +85,13 @@ selfservice:
             - hook: show_verification_ui
 
 log:
-  level: info
-  format: json
-  leak_sensitive_values: false
+  level: debug
+  format: text
+  leak_sensitive_values: true
 
 secrets:
   cookie:
-    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+    - eHSqFwfh2PCk9ekt8aemXAYIyaaMsxrwHAV1/mK1K4I=
   cipher:
     - 32-LONG-SECRET-NOT-SECURE-AT-ALL
 
@@ -111,9 +111,7 @@ identity:
 
 courier:
   smtp:
-    connection_uri: smtps://test:test@mailslurper:1025/?skip_ssl_verify=true
-    from_address: noreply@example.com
-    from_name: Kratos
+    connection_uri: smtp://2d90d9b3b6e69a:c7147752dfb969@smtp.mailtrap.io:2525
 
 feature_flags:
   use_continue_with_transitions: true
