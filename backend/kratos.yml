@@ -7,22 +7,6 @@ serve:
     base_url: env://SERVE_PUBLIC_BASE_URL
     cors:
       enabled: true
-      allowed_origins:
-        - env://SELFSERVICE_ALLOWED_RETURN_URLS
-      allowed_methods:
-        - POST
-        - GET
-        - PUT
-        - PATCH
-        - DELETE
-      allowed_headers:
-        - Authorization
-        - Cookie
-        - Content-Type
-      exposed_headers:
-        - Content-Type
-        - Set-Cookie
-      allow_credentials: true
   admin:
     base_url: env://SERVE_ADMIN_BASE_URL
 
@@ -36,7 +20,7 @@ selfservice:
       enabled: true
     totp:
       config:
-        issuer: MyApplication
+        issuer: Kratos
       enabled: true
     lookup_secret:
       enabled: true
@@ -84,9 +68,9 @@ selfservice:
             - hook: show_verification_ui
 
 log:
-  level: info
-  format: json
-  leak_sensitive_values: false
+  level: debug
+  format: text
+  leak_sensitive_values: true
 
 secrets:
   cookie:
@@ -100,7 +84,7 @@ ciphers:
 hashers:
   algorithm: bcrypt
   bcrypt:
-    cost: 12
+    cost: 8
 
 identity:
   default_schema_id: default
@@ -113,3 +97,6 @@ courier:
     connection_uri: env://COURIER_SMTP_CONNECTION_URI
     from_address: env://COURIER_SMTP_FROM_ADDRESS
     from_name: env://COURIER_SMTP_FROM_NAME
+
+feature_flags:
+  use_continue_with_transitions: true

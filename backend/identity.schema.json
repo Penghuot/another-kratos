@@ -16,19 +16,12 @@
             "credentials": {
               "password": {
                 "identifier": true
-              },
-              "totp": {
-                "account_name": true
-              },
-              "code": {
-                "identifier": true,
-                "via": "email"
               }
             },
-            "recovery": {
+            "verification": {
               "via": "email"
             },
-            "verification": {
+            "recovery": {
               "via": "email"
             }
           }
@@ -37,12 +30,12 @@
           "type": "object",
           "properties": {
             "first": {
-              "type": "string",
-              "title": "First Name"
+              "title": "First Name",
+              "type": "string"
             },
             "last": {
-              "type": "string",
-              "title": "Last Name"
+              "title": "Last Name",
+              "type": "string"
             }
           }
         }

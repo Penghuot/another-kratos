@@ -16,5 +16,5 @@ echo "Running database migrations..."
 kratos migrate sql -e --yes -c /etc/config/kratos/kratos.yml
 
 echo "Migrations completed successfully!"
-echo "Starting Kratos server..."
-exec kratos serve --watch-courier -c /etc/config/kratos/kratos.yml
+echo "Starting Kratos server in DEV MODE..."
+exec kratos serve --dev --watch-courier -c /etc/config/kratos/kratos.yml
