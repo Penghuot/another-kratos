@@ -20,6 +20,19 @@ interface FlowComponentProps {
 export const FlowComponent: React.FC<FlowComponentProps> = ({ flow, onSubmit }) => {
   const [formData, setFormData] = React.useState<Record<string, any>>({})
 
+  // Initialize form data with hidden fields (including CSRF token)
+  React.useEffect(() => {
+    if (flow?.ui?.nodes) {
+      const hiddenFields: Record<string, any> = {}
+      flow.ui.nodes.forEach((node: UiNode) => {
+        if (node.attributes.type === 'hidden' && node.attributes.value) {
+          hiddenFields[node.attributes.name] = node.attributes.value
+        }
+      })
+      setFormData(prev => ({ ...hiddenFields, ...prev }))
+    }
+  }, [flow])
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     onSubmit(formData)

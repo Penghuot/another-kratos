@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test Kratos CORS</title>
+  </head>
+  <body>
+    <h1>Testing Kratos Connection</h1>
+    <button onclick="testHealth()">Test Health</button>
+    <button onclick="testFlow()">Test Registration Flow</button>
+    <pre id="output"></pre>
+
+    <script>
+      const KRATOS_URL = "https://another-kratos-production.up.railway.app";
+
+      async function testHealth() {
+        const output = document.getElementById("output");
+        try {
+          const response = await fetch(`${KRATOS_URL}/health/alive`);
+          const data = await response.json();
+          output.textContent = "Health check: " + JSON.stringify(data, null, 2);
+        } catch (error) {
+          output.textContent = "Health Error: " + error.message;
+        }
+      }
+
+      async function testFlow() {
+        const output = document.getElementById("output");
+        try {
+          const response = await fetch(
+            `${KRATOS_URL}/self-service/registration/browser`,
+            {
+              credentials: "include",
+              headers: {
+                Accept: "application/json",
+              },
+            },
+          );
+          const data = await response.json();
+          output.textContent =
+            "Registration Flow: " + JSON.stringify(data, null, 2);
+        } catch (error) {
+          output.textContent =
+            "Flow Error: " + error.message + "\n\nThis is likely a CORS issue.";
+        }
+      }
+    </script>
+  </body>
+</html>
