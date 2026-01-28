@@ -1,7 +1,7 @@
 import { Configuration, FrontendApi } from '@ory/client'
 
 export const kratosConfig = new Configuration({
-  basePath: 'https://another-kratos-production.up.railway.app',
+  basePath: process.env.NEXT_PUBLIC_KRATOS_URL || 'https://another-kratos-production.up.railway.app',
   baseOptions: {
     withCredentials: true,
   },
@@ -10,7 +10,7 @@ export const kratosConfig = new Configuration({
 export const kratos = new FrontendApi(kratosConfig)
 
 export const getKratosUrl = () => {
-  return 'https://another-kratos-production.up.railway.app'
+  return process.env.NEXT_PUBLIC_KRATOS_URL || 'https://another-kratos-production.up.railway.app'
 }
 
 export const getAppUrl = () => {

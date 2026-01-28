@@ -7,6 +7,23 @@ serve:
     base_url: https://another-kratos-production.up.railway.app/
     cors:
       enabled: true
+      allowed_origins:
+        - http://localhost:3000
+        - https://*.up.railway.app
+      allowed_methods:
+        - POST
+        - GET
+        - PUT
+        - PATCH
+        - DELETE
+      allowed_headers:
+        - Authorization
+        - Cookie
+        - Content-Type
+      exposed_headers:
+        - Content-Type
+        - Set-Cookie
+      allow_credentials: true
   admin:
     base_url: http://localhost:4434/
 
