@@ -1,19 +1,11 @@
-FROM oryd/kratos:v1.2.0-distroless
+FROM oryd/kratos:v1.2.0
 
 # Copy configuration files
 COPY kratos.yml /etc/config/kratos/kratos.yml
 COPY identity.schema.json /etc/config/kratos/identity.schema.json
 
 # Copy startup script
-COPY <<EOF /start.sh
-#!/bin/sh
-set -e
-echo "Running database migrations..."
-kratos migrate sql -e --yes -c /etc/config/kratos/kratos.yml
-echo "Starting Kratos server..."
-exec kratos serve -c /etc/config/kratos/kratos.yml
-EOF
-
+COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 # Set working directory
