@@ -1,5 +1,4 @@
-FROM oryd/kratos:v1.2.0
-
+FROM oryd/kratos:v25.4.0
 # Copy configuration files
 COPY kratos.yml /etc/config/kratos/kratos.yml
 COPY identity.schema.json /etc/config/kratos/identity.schema.json
