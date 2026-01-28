@@ -6,6 +6,7 @@ COPY identity.schema.json /etc/config/kratos/identity.schema.json
 
 # Copy startup script
 COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 # Set working directory
 WORKDIR /etc/config/kratos
