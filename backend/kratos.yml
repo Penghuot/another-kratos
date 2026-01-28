@@ -4,16 +4,16 @@ dsn: env://DSN
 
 serve:
   public:
-    base_url: env://SERVE_PUBLIC_BASE_URL
+    base_url: https://another-kratos-production.up.railway.app/
     cors:
       enabled: true
   admin:
-    base_url: env://SERVE_ADMIN_BASE_URL
+    base_url: http://localhost:4434/
 
 selfservice:
-  default_browser_return_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL
+  default_browser_return_url: http://localhost:3000/
   allowed_return_urls:
-    - env://SELFSERVICE_ALLOWED_RETURN_URLS
+    - http://localhost:3000/
 
   methods:
     password:
@@ -31,36 +31,36 @@ selfservice:
 
   flows:
     error:
-      ui_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL/error
+      ui_url: http://localhost:3000/error
 
     settings:
-      ui_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL/settings
+      ui_url: http://localhost:3000/settings
       privileged_session_max_age: 15m
       required_aal: highest_available
 
     recovery:
       enabled: true
-      ui_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL/recovery
+      ui_url: http://localhost:3000/recovery
       use: code
 
     verification:
       enabled: true
-      ui_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL/verification
+      ui_url: http://localhost:3000/verification
       use: code
       after:
-        default_browser_return_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL
+        default_browser_return_url: http://localhost:3000/
 
     logout:
       after:
-        default_browser_return_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL
+        default_browser_return_url: http://localhost:3000/
 
     login:
-      ui_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL/login
+      ui_url: http://localhost:3000/login
       lifespan: 10m
 
     registration:
       lifespan: 10m
-      ui_url: env://SELFSERVICE_DEFAULT_BROWSER_RETURN_URL/registration
+      ui_url: http://localhost:3000/registration
       after:
         password:
           hooks:
@@ -68,9 +68,9 @@ selfservice:
             - hook: show_verification_ui
 
 log:
-  level: debug
-  format: text
-  leak_sensitive_values: true
+  level: info
+  format: json
+  leak_sensitive_values: false
 
 secrets:
   cookie:
