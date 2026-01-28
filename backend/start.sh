@@ -8,6 +8,8 @@ echo "Checking environment variables..."
 echo "DSN configured: ${DSN:+yes}"
 echo "SERVE_PUBLIC_BASE_URL: $SERVE_PUBLIC_BASE_URL"
 echo "SERVE_ADMIN_BASE_URL: $SERVE_ADMIN_BASE_URL"
+echo "SECRETS_DEFAULT length: ${#SECRETS_DEFAULT}"
+echo "SECRETS_DEFAULT value (first 10 chars): ${SECRETS_DEFAULT:0:10}..."
 echo "==================================="
 
 echo "Running database migrations..."
